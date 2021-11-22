@@ -1,7 +1,7 @@
 import cv2
 from video_capture import VideoCaptureAsync
 import time
-
+import face_recognition
 vid_w = 640
 vid_h = 480
 capture = VideoCaptureAsync(src=0, width=vid_w, height=vid_h)
@@ -14,7 +14,15 @@ def record_video():
     while True:
     # while time.time() <= time_end:
         ret, new_frame = capture.read()
+
         frames += 1
+        face_location = face_recognition.face_locations(new_frame)
+        if (len(face_location) > 0):
+            (top, right, bottom, left) = face_location[0]
+            face_image = new_frame[top:bottom, left:right]
+            face_image = face_pixelate(face_image, 5)
+            new_frame[top:bottom, left:right] = face_image
+        new_frame = cv2.cvtColor(new_frame, cv2.COLOR_BGR2GRAY)        
         images.append(new_frame)
         if frames ==0 or frames%5 == 0:
 
