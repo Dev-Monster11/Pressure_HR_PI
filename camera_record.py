@@ -42,3 +42,4 @@ def record_video():
     for i in range(len(images)):
         out.write(images[i])
     images = []
+    print('done')
