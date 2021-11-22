@@ -1,6 +1,7 @@
 import cv2
 from video_capture import VideoCaptureAsync
 import time
+from blurring import face_simple, face_pixelate 
 import face_recognition
 vid_w = 640
 vid_h = 480
