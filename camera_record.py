@@ -4,7 +4,7 @@ import time
 import face_recognition
 vid_w = 640
 vid_h = 480
-capture = VideoCaptureAsync(src=0, width=vid_w, height=vid_h)
+capture = VideoCaptureAsync(src='1.mp4', width=vid_w, height=vid_h)
 fourcc = cv2.VideoWriter_fourcc(*'MJPG')
 
 def record_video():
