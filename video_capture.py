@@ -1,7 +1,7 @@
 import threading
 import time
 import cv2
-
+import face_recognition
 # Define video capture class
 class VideoCaptureAsync:
     def __init__(self, src=0, width=640, height=480, driver=None):
