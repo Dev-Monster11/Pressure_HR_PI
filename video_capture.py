@@ -50,7 +50,7 @@ class VideoCaptureAsync:
             #     face_image = face_pixelate(face_image, 5)
             #     frame[top:bottom, left:right] = face_image
             # frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-            # grabbed = self.grabbed
+            grabbed = self.grabbed
         
         return grabbed, frame
 
