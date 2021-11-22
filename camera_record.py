@@ -5,7 +5,7 @@ import face_recognition
 vid_w = 640
 vid_h = 480
 capture = VideoCaptureAsync(src=0, width=vid_w, height=vid_h)
-fourcc = cv2.VideoWriter_fourcc(*'MP4V')
+fourcc = cv2.VideoWriter_fourcc(*'MJPG')
 
 def record_video():
     capture.start()
@@ -40,7 +40,7 @@ def record_video():
     # print(frames)
     # print(fps)
     print(len(images)) 
-    out = cv2.VideoWriter('1.mp4', fourcc, 10, (vid_w,vid_h))
+    out = cv2.VideoWriter('1.avi', fourcc, 10, (vid_w,vid_h))
     print("creating video")
     for i in range(len(images)):
         out.write(images[i])
