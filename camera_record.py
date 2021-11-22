@@ -16,12 +16,12 @@ def record_video():
         ret, new_frame = capture.read()
 
         frames += 1
-        face_location = face_recognition.face_locations(new_frame)
-        if (len(face_location) > 0):
-            (top, right, bottom, left) = face_location[0]
-            face_image = new_frame[top:bottom, left:right]
-            face_image = face_pixelate(face_image, 5)
-            new_frame[top:bottom, left:right] = face_image
+        # face_location = face_recognition.face_locations(new_frame)
+        # if (len(face_location) > 0):
+        #     (top, right, bottom, left) = face_location[0]
+        #     face_image = new_frame[top:bottom, left:right]
+        #     face_image = face_pixelate(face_image, 5)
+        #     new_frame[top:bottom, left:right] = face_image
         new_frame = cv2.cvtColor(new_frame, cv2.COLOR_BGR2GRAY)        
         images.append(new_frame)
         if frames ==0 or frames%5 == 0:
