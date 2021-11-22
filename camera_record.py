@@ -24,11 +24,11 @@ def record_video():
         #     new_frame[top:bottom, left:right] = face_image
         frame = cv2.cvtColor(new_frame, cv2.COLOR_BGR2GRAY)        
         images.append(frame)
-        if frames ==0 or frames%5 == 0:
+        # if frames ==0 or frames%5 == 0:
 
-            # frame = cv2.resize(temp,(vid_w, vid_h))
+        frame = cv2.resize(frame, (vid_w, vid_h))
             # frame = cv2.flip(frame,180)
-            cv2.imshow('frame', frame)
+        cv2.imshow('frame', frame)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
     capture.stop()
