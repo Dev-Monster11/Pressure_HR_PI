@@ -1,7 +1,7 @@
 import cv2
 from video_capture import VideoCaptureAsync
 import time
-
+import face_recognition
 vid_w = 640
 vid_h = 480
 capture = VideoCaptureAsync(src=0, width=vid_w, height=vid_h)
