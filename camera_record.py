@@ -26,8 +26,8 @@ def record_video():
         images.append(frame)
         if frames ==0 or frames%5 == 0:
 
-            frame = cv2.resize(new_frame,(vid_w, vid_h))
-            frame = cv2.flip(frame,180)
+            # frame = cv2.resize(temp,(vid_w, vid_h))
+            # frame = cv2.flip(frame,180)
             cv2.imshow('frame', frame)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
