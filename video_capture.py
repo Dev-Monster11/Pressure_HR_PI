@@ -43,14 +43,14 @@ class VideoCaptureAsync:
     def read(self):
         with self.read_lock:
             frame = self.frame.copy()
-            face_location = face_recognition.face_locations(frame)
-            if (len(face_location) > 0):
-                (top, right, bottom, left) = face_location[0]
-                face_image = frame[top:bottom, left:right]
-                face_image = face_pixelate(face_image, 5)
-                frame[top:bottom, left:right] = face_image
-            frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-            grabbed = self.grabbed
+            # face_location = face_recognition.face_locations(frame)
+            # if (len(face_location) > 0):
+            #     (top, right, bottom, left) = face_location[0]
+            #     face_image = frame[top:bottom, left:right]
+            #     face_image = face_pixelate(face_image, 5)
+            #     frame[top:bottom, left:right] = face_image
+            # frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+            # grabbed = self.grabbed
         
         return grabbed, frame
 
