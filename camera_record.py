@@ -7,7 +7,7 @@ vid_h = 480
 capture = VideoCaptureAsync(src=0, width=vid_w, height=vid_h)
 fourcc = cv2.VideoWriter_fourcc(*'DIVX')
 
-def record_video(duration):
+def record_video():
     capture.start()
     frames = 0
     images = []
@@ -25,9 +25,9 @@ def record_video(duration):
             break
     capture.stop()
     cv2.destroyAllWindows()
-    fps = frames/duration
-    print(frames)
-    print(fps)
+    # fps = frames/duration
+    # print(frames)
+    # print(fps)
     print(len(images)) 
     out = cv2.VideoWriter('video.avi', fourcc, 10, (vid_w,vid_h))
     print("creating video")
