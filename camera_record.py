@@ -22,11 +22,11 @@ def record_video():
         #     face_image = new_frame[top:bottom, left:right]
         #     face_image = face_pixelate(face_image, 5)
         #     new_frame[top:bottom, left:right] = face_image
-        # new_frame = cv2.cvtColor(new_frame, cv2.COLOR_BGR2GRAY)        
-        images.append(new_frame)
+        frame = cv2.cvtColor(new_frame, cv2.COLOR_BGR2GRAY)        
+        images.append(frame)
         if frames ==0 or frames%5 == 0:
 
-            frame = cv2.resize(new_frame,(640,480))
+            frame = cv2.resize(new_frame,(vid_w, vid_h))
             frame = cv2.flip(frame,180)
             cv2.imshow('frame', frame)
         if cv2.waitKey(1) & 0xFF == ord('q'):
