@@ -1,9 +1,7 @@
 import threading
 import time
 import cv2
-import face_recognition
 
-from blurring import face_simple, face_pixelate
 # Define video capture class
 class VideoCaptureAsync:
     def __init__(self, src=0, width=640, height=480, driver=None):
@@ -37,25 +35,23 @@ class VideoCaptureAsync:
 
     def update(self):
         while self.started:
-
             grabbed, frame = self.cap.read()
             with self.read_lock:
-
                 self.grabbed = grabbed
-                face_location = face_recognition.face_locations(frame)
-                if (len(face_location) > 0):
-                    (top, right, bottom, left) = face_location[0]
-                    face_image = frame[top:bottom, left:right]
-                    face_image = face_pixelate(face_image, 5)
-                    frame[top:bottom, left:right] = face_image
-                
-                self.frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-
+                self.frame = frame
 
     def read(self):
         with self.read_lock:
             frame = self.frame.copy()
+            face_location = face_recognition.face_locations(frame)
+            if (len(face_location) > 0):
+                (top, right, bottom, left) = face_location[0]
+                face_image = frame[top:bottom, left:right]
+                face_image = face_pixelate(face_image, 5)
+                frame[top:bottom, left:right] = face_image
+            frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
             grabbed = self.grabbed
+        
         return grabbed, frame
 
     def stop(self):
