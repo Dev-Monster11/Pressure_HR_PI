@@ -5,7 +5,7 @@ import face_recognition
 vid_w = 640
 vid_h = 480
 capture = VideoCaptureAsync(src=0, width=vid_w, height=vid_h)
-fourcc = cv2.VideoWriter_fourcc(*'DIVX')
+fourcc = cv2.VideoWriter_fourcc(*'MP4V')
 
 def record_video():
     capture.start()
