@@ -43,7 +43,7 @@ class HeartRate(QObject):
             # Get data from gatttool
             datahex = self.gt.match.group(1).strip()
             data = map(lambda x: int(x, 16), datahex.split(b' '))
-            res = interpret(list(data))
+            res = self.interpret(list(data))
         
         # self.thread = QThread()
         # self.moveToThread(self.thread)
