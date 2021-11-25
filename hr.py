@@ -45,6 +45,7 @@ class HeartRate(QObject):
             datahex = self.gt.match.group(1).strip()
             data = map(lambda x: int(x, 16), datahex.split(b' '))
             res = self.interpret(list(data))
+            print(res)
             self.HRpacketCapture.emit(res.hr)
             QThread.msleep(40)
     def startHR(self):
