@@ -4,7 +4,7 @@ import sys
 import qtawesome as qta
 from PyQt5.QtWidgets import QApplication, QDialog
 from PyQt5.QtChart import QChart, QChartView, QLineSeries, QValueAxis
-from PyQt5.QtCore import QPointF, QMargins, QTimer, QSize, pyqtSlot, QRandomGenerator
+from PyQt5.QtCore import QPointF, QMargins, QTimer, QSize, pyqtSlot, Qt
 from PyQt5.QtGui import QPainter
 from ui import Ui_Dialog
 from camera import CameraBackend
