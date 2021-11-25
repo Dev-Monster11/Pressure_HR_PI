@@ -9,7 +9,7 @@ import cv2
 class CameraBackend(QObject):
     def __init__(self):
         super(CameraBackend, self).__init__()
-
+        self.tempPath = './'
     def setViewFinder(self, label):
         self.viewFinder = label
     def startStreaming(self):
