@@ -50,8 +50,11 @@ class MainDlg(QDialog):
         self.chart.legend().hide()
         self.chart.addSeries(self.series)
         self.chart.addSeries(self.sseries)
-        # self.series.attachAxis(self.axisX)
-        # self.series.attachAxis(self.axisY)
+        self.series.attachAxis(self.axisX)
+        self.series.attachAxis(self.axisY)
+        self.sseries.attachAxis(self.axisX)
+        self.sseries.attachAxis(self.axisY)
+
         # chart.createDefaultAxes()
         self.chart.setMargins(QMargins(0, 0, 0, 0))
         self.chart.setTheme(QChart.ChartThemeDark)
