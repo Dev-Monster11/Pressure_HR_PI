@@ -269,17 +269,6 @@ QListWidget{
       <property name="bottomMargin">
        <number>10</number>
       </property>
-      <item>
-       <widget class="QLabel" name="lblHR">
-        <property name="styleSheet">
-         <string notr="true">font-weight: bold;
-font-size: 50px;</string>
-        </property>
-        <property name="text">
-         <string>0</string>
-        </property>
-       </widget>
-      </item>
      </layout>
     </item>
    </layout>
@@ -571,6 +560,29 @@ font-weight: bold;</string>
      </widget>
     </item>
    </layout>
+  </widget>
+  <widget class="QLabel" name="lblHR">
+   <property name="geometry">
+    <rect>
+     <x>1060</x>
+     <y>30</y>
+     <width>131</width>
+     <height>191</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>100</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font-weight: bold;
+font-size: 50px;</string>
+   </property>
+   <property name="text">
+    <string>0</string>
+   </property>
   </widget>
  </widget>
  <resources/>

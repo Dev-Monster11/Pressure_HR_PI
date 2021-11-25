@@ -62,7 +62,7 @@ class MainDlg(QDialog):
         chartview.setRenderHint(QPainter.Antialiasing)
         # self.ui.realtimeLayout.addWidget(chartview, 0, 1, 1, 1)
         self.ui.hrLayout.addWidget(chartview)
-
+        self.ui.hrLayout.addWidget(self.ui.lblHR)
         #---Status Variable Initialization
         self.startFlag = True
         self.camera = CameraBackend()
@@ -95,6 +95,7 @@ class MainDlg(QDialog):
         self.sseries.append(self.index, hr)
         if self.index > 40:
             self.axisX.setRange(self.index - 40 + 1, self.index - 40 + 51)
+        self.ui.lblHR.setText(str(hr))
         # self.index += 1
         # self.series.append(self.index, (100 - self.index) % 150)
         # print(self.index, hr)

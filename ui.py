@@ -234,11 +234,6 @@ class Ui_Dialog(object):
         self.hrLayout = QtWidgets.QHBoxLayout()
         self.hrLayout.setContentsMargins(10, 10, 10, 10)
         self.hrLayout.setObjectName("hrLayout")
-        self.lblHR = QtWidgets.QLabel(self.gridLayoutWidget)
-        self.lblHR.setStyleSheet("font-weight: bold;\n"
-"font-size: 50px;")
-        self.lblHR.setObjectName("lblHR")
-        self.hrLayout.addWidget(self.lblHR)
         self.realtimeLayout.addLayout(self.hrLayout, 0, 1, 1, 1)
         self.realtimeLayout.setColumnStretch(0, 1)
         self.realtimeLayout.setColumnStretch(1, 1)
@@ -345,6 +340,12 @@ class Ui_Dialog(object):
         self.label_4 = QtWidgets.QLabel(self.gridLayoutWidget_5)
         self.label_4.setObjectName("label_4")
         self.gridLayout.addWidget(self.label_4, 0, 4, 1, 1)
+        self.lblHR = QtWidgets.QLabel(Dialog)
+        self.lblHR.setGeometry(QtCore.QRect(1060, 30, 131, 191))
+        self.lblHR.setMinimumSize(QtCore.QSize(100, 0))
+        self.lblHR.setStyleSheet("font-weight: bold;\n"
+"font-size: 50px;")
+        self.lblHR.setObjectName("lblHR")
 
         self.retranslateUi(Dialog)
         self.tabWidget.setCurrentIndex(0)
@@ -353,7 +354,6 @@ class Ui_Dialog(object):
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
-        self.lblHR.setText(_translate("Dialog", "0"))
         self.btnStart.setText(_translate("Dialog", "Start"))
         self.btnExit.setText(_translate("Dialog", "Exit"))
         self.btnUpload.setText(_translate("Dialog", "Upload"))
@@ -366,6 +366,7 @@ class Ui_Dialog(object):
         self.btnStart_3.setText(_translate("Dialog", "<"))
         self.btnStart_5.setText(_translate("Dialog", ">>"))
         self.label_4.setText(_translate("Dialog", "Page"))
+        self.lblHR.setText(_translate("Dialog", "0"))
 
 
 if __name__ == "__main__":
