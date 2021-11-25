@@ -1,5 +1,5 @@
 
-from PyQt5.QtCore import QObject, QThread
+from PyQt5.QtCore import QObject, QThread, Qt
 from PyQt5.QtWidgets import QLabel
 from PyQt5.QtGui import QImage, QPixmap
 from blurring import face_simple, face_pixelate 
@@ -40,14 +40,14 @@ class CameraBackend(QObject):
                 face_image = image[top:bottom, left:right]
                 face_image = face_pixelate(face_image, 5)
                 image[top:bottom, left:right] = face_image
+            h, w, c = image.shape
+
+            bPL = w * c
+            qImg = QImage(image.data, w, h, bPL, QImage.Format_RGB888).rgbSwapped()
+            self.viewFinder.setPixmap(QPixmap.fromImage(qImg, Qt.MonoOnly))
             image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
             
             cv2.imwrite("{0}.jpg".format(self.index), image)
-            h, w = image.shape
-            print(h, w)
-            bPL = w
-            qImg = QImage(image.data, w, h, bPL, QImage.Format_Mono)
-            self.viewFinder.setPixmap(QPixmap.fromImage(qImg))
             
             QThread.msleep(40)
     
