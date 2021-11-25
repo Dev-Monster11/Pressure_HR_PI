@@ -60,12 +60,6 @@ class MainDlg(QDialog):
 def main():
     app = QApplication(sys.argv)
     maindlg = MainDlg()
-    # window = QDialog()
-    # ui = Ui_Dialog()
-    # ui.setupUi(window)
-    # layout(window, ui)
-    # processChart(ui)
-    # processConnect(ui)
     maindlg.showFullScreen()
     sys.exit(app.exec_())
 

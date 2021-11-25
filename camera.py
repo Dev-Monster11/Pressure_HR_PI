@@ -25,6 +25,7 @@ class CameraBackend(QObject):
         pass
     def captureVideo(self):
         if not self.cap.isOpened():
+            print('camera is not detected')
             return
         if os.path.exists(self.tempPath):
             os.chdir(self.tempPath)
