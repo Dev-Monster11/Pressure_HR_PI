@@ -42,7 +42,7 @@ class CameraBackend(QObject):
                 image[top:bottom, left:right] = face_image
             image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
             
-            cv2.imwrite("{0}.jpg".format(index), image)
+            cv2.imwrite("{0}.jpg".format(self.index), image)
             h, w = image.shape
             print(h, w)
             bPL = w
