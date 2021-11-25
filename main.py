@@ -42,8 +42,8 @@ class MainDlg(QDialog):
         axisX.setRange(0, 50)
         self.chart.addAxis(axisX, Qt.AlignBottom)
         self.chart.addAxis(axisY, Qt.AlignLeft)
-        # self.chart.legend[0].set
-
+        # self.chart.legend().setMarkerShape(QLegend::MarkerShapeCircle)
+        self.chart.legend().hide()
         self.chart.addSeries(self.series)
         self.series.attachAxis(axisX)
         self.series.attachAxis(axisY)
