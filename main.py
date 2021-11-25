@@ -3,7 +3,7 @@ import sys
 
 import qtawesome as qta
 from PyQt5.QtWidgets import QApplication, QDialog
-from PyQt5.QtChart import QChart, QChartView, QLineSeries
+from PyQt5.QtChart import QChart, QChartView, QLineSeries, QValueAxis
 from PyQt5.QtCore import QPointF, QMargins, QTimer, QSize, pyqtSlot
 from PyQt5.QtGui import QPainter
 from ui import Ui_Dialog
@@ -36,7 +36,15 @@ class MainDlg(QDialog):
         self.series = QLineSeries()
         chart = QChart()
         chart.addSeries(self.series)
-        chart.createDefaultAxes()
+        axisY = QValueAxis()
+        axisY.setRange(0, 200)
+        axisX = QValueAxis()
+        axisX.setRange(0, 200)
+        chart.addAxis(axisX, Qt.AlignBottom)
+        chart.addAxis(axisY, Qt.AlignLeft)
+        
+        # chart.createDefaultAxes()
+        chart.xAxis()
         chart.setMargins(QMargins(0, 0, 0, 0))
         chart.setTheme(QChart.ChartThemeDark)
         chartview = QChartView(chart)
@@ -66,6 +74,7 @@ class MainDlg(QDialog):
     def HRpacketCaptured(self, hr):
         self.index += 1
         self.series.append(self.index, hr)
+        # self.series.append(self.index, )
         print(hr)
 
     def btnExit_clicked(self):
