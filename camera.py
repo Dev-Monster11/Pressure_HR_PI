@@ -45,9 +45,9 @@ class CameraBackend(QObject):
             
             cv2.imwrite("{0}.jpg".format(self.index), image)
 
-            h, w, c = image.shape
+            h, w = image.shape
 
-            bPL = w * c
+            bPL = w 
             qImg = QImage(image.data, w, h, bPL, QImage.Format_RGB888).rgbSwapped().scaled(self.viewFinder.width(), self.viewFinder.height())
             self.viewFinder.setPixmap(QPixmap.fromImage(qImg, Qt.MonoOnly))
             
