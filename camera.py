@@ -8,7 +8,7 @@ import os
 import cv2
 class CameraBackend(QObject):
     def __init__(self):
-        super(FirebaseBackend, self).__init__()
+        super(CameraBackend, self).__init__()
 
     def setViewFinder(self, label):
         self.viewFinder = label
