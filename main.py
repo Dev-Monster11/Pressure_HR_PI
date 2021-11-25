@@ -65,7 +65,7 @@ class MainDlg(QDialog):
     @pyqtSlot(int)
     def HRpacketCaptured(self, hr):
         self.index += 1
-        self.series.append(index, hr)
+        self.series.append(self.index, hr)
 
     def btnExit_clicked(self):
         sys.exit(0)
