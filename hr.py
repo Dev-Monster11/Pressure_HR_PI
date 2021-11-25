@@ -6,7 +6,7 @@ class HeartRate(QObject):
         super(HeartRate, self).__init__()    
         self.batterylevel = 0
         
-    def startHR(self):
+    def captureHR(self):
         retry = True        
         self.gt.sendline("char-write-req 0x0011 0100")
         period = 1.
@@ -44,6 +44,12 @@ class HeartRate(QObject):
             datahex = self.gt.match.group(1).strip()
             data = map(lambda x: int(x, 16), datahex.split(b' '))
             res = self.interpret(list(data))
+            QThread.msleep(40)
+    def startHR(self):
+        self.thread = QThread()
+        self.moveToThread(self.thread)
+        self.thread.started.connect(self.captureHR)
+        self.thread.start()
         
         # self.thread = QThread()
         # self.moveToThread(self.thread)
