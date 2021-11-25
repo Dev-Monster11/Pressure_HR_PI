@@ -34,22 +34,23 @@ class MainDlg(QDialog):
         self.ui.btnExit.setIconSize(QSize(32, 32))
         #----Chart Initialization
         self.series = QLineSeries()
-        chart = QChart()
+        self.chart = QChart()
         
         axisY = QValueAxis()
         axisY.setRange(0, 200)
         axisX = QValueAxis()
         axisX.setRange(0, 200)
-        chart.addAxis(axisX, Qt.AlignBottom)
-        chart.addAxis(axisY, Qt.AlignLeft)
+        self.chart.addAxis(axisX, Qt.AlignBottom)
+        self.chart.addAxis(axisY, Qt.AlignLeft)
 
 
-        chart.addSeries(self.series)
-
+        self.chart.addSeries(self.series)
+        self.series.attachAxis(axisX)
+        self.series.attachAxis(axisY)
         # chart.createDefaultAxes()
-        chart.setMargins(QMargins(0, 0, 0, 0))
-        chart.setTheme(QChart.ChartThemeDark)
-        chartview = QChartView(chart)
+        self.chart.setMargins(QMargins(0, 0, 0, 0))
+        self.chart.setTheme(QChart.ChartThemeDark)
+        chartview = QChartView(self.chart)
         chartview.setRenderHint(QPainter.Antialiasing)
         self.ui.realtimeLayout.addWidget(chartview, 0, 1, 1, 1)
 
