@@ -14,7 +14,7 @@ class HeartRate(QObject):
         hr_expect = "Notification handle = 0x1100 value: ([0-9a-f ]+)"
         while True:
             try:
-                gt.expect(hr_expect, timeout=10)
+                self.gt.expect(hr_expect, timeout=10)
 
             except pexpect.TIMEOUT:
                 # If the timer expires, it means that we have lost the
@@ -41,7 +41,7 @@ class HeartRate(QObject):
             last_measure = tmeasure
 
             # Get data from gatttool
-            datahex = gt.match.group(1).strip()
+            datahex = self.gt.match.group(1).strip()
             data = map(lambda x: int(x, 16), datahex.split(b' '))
             res = interpret(list(data))
         
@@ -97,7 +97,7 @@ class HeartRate(QObject):
         try:
             self.gt.expect("value: ([0-9a-f]+)")
             battery_level = self.gt.match.group(1)
-            self.battery_level = int(self.battery_level, 16)
+            self.battery_level = int(battery_level, 16)
             print("Battery level: " + str(self.battery_level))
 
         except pexpect.TIMEOUT:
