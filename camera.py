@@ -21,7 +21,7 @@ class CameraBackend(QObject):
     def setTempPath(self, tmpPath):
         self.tempPath = tmpPath
     def stopStream(self):
-
+        pass
     def captureVideo(self):
         if not self.cap.isOpen():
             return
