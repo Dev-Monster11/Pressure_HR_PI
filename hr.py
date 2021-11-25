@@ -6,7 +6,7 @@ class HeartRate(QObject):
         super(HeartRate, self).__init__()    
         self.batterylevel = 0
         
-    def startReading(self):
+    def startHR(self):
         retry = True        
         self.gt.sendline("char-write-req 0x0011 0100")
         period = 1.

@@ -67,9 +67,10 @@ class MainDlg(QDialog):
         self.startFlag = not self.startFlag
         if self.startFlag == True:
             self.ui.btnStart.setText('Start')
+            self.hr.stopHR()
         else:
             self.ui.btnStart.setText('Stop')
-            self.hr.startReading()
+            self.hr.startHR()
             self.camera.startStreaming()
 
 def main():
