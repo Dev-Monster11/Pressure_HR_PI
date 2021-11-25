@@ -26,7 +26,7 @@ class MainDlg(QDialog):
         self.ui.btnStart.setIcon(qta.icon('ri.play-fill', color='green'))
         self.ui.btnStart.setIconSize(QSize(32, 32))
 
-        self.ui.btnUpload.setIcon(qta.icon('ri.video-upload'), color='green')
+        self.ui.btnUpload.setIcon(qta.icon('ri.video-upload-fill'), color='green')
         self.ui.btnUpload.setIconSize(QSize(32, 32))
 
         self.ui.btnExit.setIcon(qta.icon('ri.close-circle-fill'), color='green')
