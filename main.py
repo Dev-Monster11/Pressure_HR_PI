@@ -43,6 +43,10 @@ class MainDlg(QDialog):
         #---Connection
         self.ui.btnStart.clicked.connect(self.btnStart_clicked)
         self.ui.btnExit.clicked.connect(self.btnExit_clicked)
+
+
+
+        self.camera.setViewFinder(self.ui.label)
     def btnExit_clicked(self):
         sys.exit(0)
     def btnStart_clicked(self):
