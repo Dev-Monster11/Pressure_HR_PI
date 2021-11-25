@@ -23,9 +23,9 @@ class MainDlg(QDialog):
         self.ui.groupBox.setLayout(self.ui.groupboxLayout)
         self.ui.groupBox_2.setLayout(self.ui.gridLayout)
         #-----UI----
-        self.ui.btnStart.setIcon(qta.icon('fa5.play'))
-        self.ui.btnUpload.setIcon(qta.icon('fa5.upload'))
-        self.ui.btnExit.setIcon(qta.icon('fa5.times-circle'))
+        self.ui.btnStart.setIcon(qta.icon('ri.play-fill'))
+        # self.ui.btnUpload.setIcon(qta.icon('fa5.upload'))
+        # self.ui.btnExit.setIcon(qta.icon('fa5.times-circle'))
         #----Chart Initialization
         self.series = QLineSeries()
         chart = QChart()
