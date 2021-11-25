@@ -63,7 +63,7 @@ class MainDlg(QDialog):
         #-----global variables---
         self.index = 0
     @pyqtSlot(int)
-    def HRpacketCaptured(hr):
+    def HRpacketCaptured(self, hr):
         self.index += 1
         self.series.append(index, hr)
 
