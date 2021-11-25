@@ -78,7 +78,7 @@ class MainDlg(QDialog):
     def abc(self):
         self.index += 1
         self.series.append(self.index, 100 - self.index)
-        
+        print('timereim')
     @pyqtSlot(int)
     def HRpacketCaptured(self, hr):
         self.index += 1
