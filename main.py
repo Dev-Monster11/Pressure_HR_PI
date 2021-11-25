@@ -4,7 +4,7 @@ import sys
 import qtawesome as qta
 from PyQt5.QtWidgets import QApplication, QDialog
 from PyQt5.QtChart import QChart, QChartView, QLineSeries, QValueAxis
-from PyQt5.QtCore import QPointF, QMargins, QTimer, QSize, pyqtSlot
+from PyQt5.QtCore import QPointF, QMargins, QTimer, QSize, pyqtSlot, QRandomGenerator
 from PyQt5.QtGui import QPainter
 from ui import Ui_Dialog
 from camera import CameraBackend
@@ -42,7 +42,7 @@ class MainDlg(QDialog):
         axisX.setRange(0, 200)
         chart.addAxis(axisX, Qt.AlignBottom)
         chart.addAxis(axisY, Qt.AlignLeft)
-        
+
         # chart.createDefaultAxes()
         chart.xAxis()
         chart.setMargins(QMargins(0, 0, 0, 0))
@@ -74,8 +74,8 @@ class MainDlg(QDialog):
     def HRpacketCaptured(self, hr):
         self.index += 1
         self.series.append(self.index, hr)
-        # self.series.append(self.index, )
-        print(hr)
+        self.index += 1
+        self.series.append(self.index, QRandomGenerator.global.bounded(200))
 
     def btnExit_clicked(self):
         sys.exit(0)
