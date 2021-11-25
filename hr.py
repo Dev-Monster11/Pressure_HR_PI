@@ -1,4 +1,4 @@
-from PyQt5.QtCore import QObject
+from PyQt5.QtCore import QObject, QThread
 import time
 import pexpect
 class HeartRate(QObject):
