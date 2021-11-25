@@ -35,13 +35,16 @@ class MainDlg(QDialog):
         #----Chart Initialization
         self.series = QLineSeries()
         chart = QChart()
-        chart.addSeries(self.series)
+        
         axisY = QValueAxis()
         axisY.setRange(0, 200)
         axisX = QValueAxis()
         axisX.setRange(0, 200)
         chart.addAxis(axisX, Qt.AlignBottom)
         chart.addAxis(axisY, Qt.AlignLeft)
+
+
+        chart.addSeries(self.series)
 
         # chart.createDefaultAxes()
         chart.setMargins(QMargins(0, 0, 0, 0))
@@ -75,6 +78,7 @@ class MainDlg(QDialog):
         self.series.append(self.index, hr)
         self.index += 1
         self.series.append(self.index, (100 - self.index) % 150)
+        print(hr)
 
     def btnExit_clicked(self):
         sys.exit(0)
