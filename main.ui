@@ -262,7 +262,7 @@ QListWidget{
     <rect>
      <x>1060</x>
      <y>530</y>
-     <width>180</width>
+     <width>401</width>
      <height>80</height>
     </rect>
    </property>
@@ -289,7 +289,7 @@ QListWidget{
       </property>
      </widget>
     </item>
-    <item row="0" column="1">
+    <item row="0" column="2">
      <widget class="QPushButton" name="btnExit">
       <property name="maximumSize">
        <size>
@@ -299,6 +299,19 @@ QListWidget{
       </property>
       <property name="text">
        <string>Exit</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QPushButton" name="btnUpload">
+      <property name="maximumSize">
+       <size>
+        <width>200</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>Upload</string>
       </property>
      </widget>
     </item>

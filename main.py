@@ -1,7 +1,7 @@
 
 import sys
 
-
+import qtawesome as qta
 from PyQt5.QtWidgets import QApplication, QDialog
 from PyQt5.QtChart import QChart, QChartView, QLineSeries
 from PyQt5.QtCore import QPointF, QMargins, QTimer
@@ -22,7 +22,10 @@ class MainDlg(QDialog):
         self.ui.tab_2.setLayout(self.ui.historyLayout)
         self.ui.groupBox.setLayout(self.ui.groupboxLayout)
         self.ui.groupBox_2.setLayout(self.ui.gridLayout)
-
+        #-----UI----
+        self.ui.btnStart.setIcon(qta.icon('fa5.play'))
+        self.ui.btnUpload.setIcon(qta.icon('fa5.upload'))
+        self.ui.btnExit.setIcon(qta.icon('fa5.times-circle'))
         #----Chart Initialization
         self.series = QLineSeries()
         chart = QChart()

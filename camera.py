@@ -49,7 +49,6 @@ class CameraBackend(QObject):
             bPL = w
             qImg = QImage(image.data, w, h, bPL, QImage.Format_Grayscale8).scaled(self.viewFinder.width(), self.viewFinder.height())
             self.viewFinder.setPixmap(QPixmap.fromImage(qImg, Qt.MonoOnly))
-
             
             QThread.msleep(40)
     
