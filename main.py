@@ -73,19 +73,19 @@ class MainDlg(QDialog):
         
         #-----global variables---
         self.index = 0
-        self.timer = QTimer()
-        self.timer.timeout.connect(self.abc)
-        self.timer.start(100)
-    def abc(self):
-        self.index += 1
-        self.series.append(self.index, 100 - self.index)
-        print('timereim')
+    #     self.timer = QTimer()
+    #     self.timer.timeout.connect(self.abc)
+    #     self.timer.start(100)
+    # def abc(self):
+    #     self.index += 1
+    #     self.series.append(self.index, 100 - self.index)
+    #     print('timereim')
     @pyqtSlot(int)
     def HRpacketCaptured(self, hr):
         self.index += 1
         self.series.append(self.index, hr)
-        self.index += 1
-        self.series.append(self.index, (100 - self.index) % 150)
+        # self.index += 1
+        # self.series.append(self.index, (100 - self.index) % 150)
         print(self.index, hr)
 
     def btnExit_clicked(self):
