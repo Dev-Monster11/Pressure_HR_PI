@@ -44,7 +44,6 @@ class MainDlg(QDialog):
         chart.addAxis(axisY, Qt.AlignLeft)
 
         # chart.createDefaultAxes()
-        chart.xAxis()
         chart.setMargins(QMargins(0, 0, 0, 0))
         chart.setTheme(QChart.ChartThemeDark)
         chartview = QChartView(chart)
