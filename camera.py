@@ -41,14 +41,15 @@ class CameraBackend(QObject):
                 face_image = image[top:bottom, left:right]
                 face_image = face_pixelate(face_image, 5)
                 image[top:bottom, left:right] = face_image
+            image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+            
+            cv2.imwrite("{0}.jpg".format(self.index), image)
+
             h, w, c = image.shape
 
             bPL = w * c
             qImg = QImage(image.data, w, h, bPL, QImage.Format_RGB888).rgbSwapped().scaled(self.viewFinder.width(), self.viewFinder.height())
             self.viewFinder.setPixmap(QPixmap.fromImage(qImg, Qt.MonoOnly))
-            image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-            
-            cv2.imwrite("{0}.jpg".format(self.index), image)
             
             QThread.msleep(40)
     
