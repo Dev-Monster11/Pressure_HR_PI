@@ -113,5 +113,4 @@ class HeartRate(QObject):
                 self.gt.expect(r"\[LE\]>", timeout=30)
         except pexpect.TIMEOUT:
             print("Connection timeout. Retrying.")
-            continue
         print('connected')
