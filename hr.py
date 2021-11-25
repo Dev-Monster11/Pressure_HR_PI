@@ -3,7 +3,7 @@ import time
 import pexpect
 class HeartRate(QObject):
     def __init__(self):
-        super(DataBackend, self).__init__()    
+        super(HeartRate, self).__init__()    
         self.batterylevel = 0
         
     def startReading(self):
