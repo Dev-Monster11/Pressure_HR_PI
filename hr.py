@@ -8,10 +8,10 @@ class HeartRate(QObject):
         
     def startReading(self):
         retry = True        
-        self.gt.sendline("char-write-req 0x1100 0100")
+        self.gt.sendline("char-write-req 0x0011 0100")
         period = 1.
         last_measure = time.time() - period
-        hr_expect = "Notification handle = 0x1100 value: ([0-9a-f ]+)"
+        hr_expect = "Notification handle = 0x0010 value: ([0-9a-f ]+)"
         while True:
             try:
                 self.gt.expect(hr_expect, timeout=10)
