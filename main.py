@@ -57,14 +57,19 @@ class MainDlg(QDialog):
 
 
         self.camera.setViewFinder(self.ui.label)
+        self.hr.connect()
+
     def btnExit_clicked(self):
         sys.exit(0)
     def btnStart_clicked(self):
+
+        
         self.startFlag = not self.startFlag
         if self.startFlag == True:
             self.ui.btnStart.setText('Start')
         else:
             self.ui.btnStart.setText('Stop')
+            self.hr.startReading()
             self.camera.startStreaming()
 
 def main():
