@@ -4,14 +4,14 @@ import sys
 import qtawesome as qta
 from PyQt5.QtWidgets import QApplication, QDialog
 from PyQt5.QtChart import QChart, QChartView, QLineSeries
-from PyQt5.QtCore import QPointF, QMargins, QTimer, QSize
+from PyQt5.QtCore import QPointF, QMargins, QTimer, QSize, pyqtSlot
 from PyQt5.QtGui import QPainter
 from ui import Ui_Dialog
 from camera import CameraBackend
 from db import DataBackend
 from hr import HeartRate
 class MainDlg(QDialog):
-
+    
     def __init__(self):
         super(MainDlg, self).__init__()
 
@@ -59,6 +59,14 @@ class MainDlg(QDialog):
         self.camera.setViewFinder(self.ui.label)
         self.hr.connect()
 
+        
+        #-----global variables---
+        self.index = 0
+    @pyqtSlot(int)
+    def HRpacketCaptured(hr):
+        self.index += 1
+        self.series.append(index, hr)
+
     def btnExit_clicked(self):
         sys.exit(0)
     def btnStart_clicked(self):
@@ -69,6 +77,8 @@ class MainDlg(QDialog):
             self.ui.btnStart.setText('Start')
             self.hr.stopHR()
         else:
+            self.index = 0
+            self.hr.HRpacketCapture.connect(self.HRpacketCaptured)
             self.ui.btnStart.setText('Stop')
             self.hr.startHR()
             self.camera.startStreaming()

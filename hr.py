@@ -1,7 +1,8 @@
-from PyQt5.QtCore import QObject, QThread
+from PyQt5.QtCore import QObject, QThread, pyqtSignal
 import time
 import pexpect
 class HeartRate(QObject):
+    HRpacketCapture = pyqtSignal(int)
     def __init__(self):
         super(HeartRate, self).__init__()    
         self.batterylevel = 0
@@ -44,6 +45,7 @@ class HeartRate(QObject):
             datahex = self.gt.match.group(1).strip()
             data = map(lambda x: int(x, 16), datahex.split(b' '))
             res = self.interpret(list(data))
+            self.HRpacketCapture.emit(res.hr)
             QThread.msleep(40)
     def startHR(self):
         self.thread = QThread()
@@ -90,9 +92,7 @@ class HeartRate(QObject):
                 # Note: Need to divide the value by 1024 to get in seconds
                 res["rr"].append((data[i + 1] << 8) | data[i])
                 i += 2
-        print(res)
-        return res        
-    # def readHR(self):
+        return res;        
         
 
     def stopHR(self):
