@@ -60,8 +60,8 @@ class MainDlg(QDialog):
         self.chart.setTheme(QChart.ChartThemeDark)
         chartview = QChartView(self.chart)
         chartview.setRenderHint(QPainter.Antialiasing)
-        self.ui.realtimeLayout.addWidget(chartview, 0, 1, 1, 1)
-        
+        # self.ui.realtimeLayout.addWidget(chartview, 0, 1, 1, 1)
+        self.ui.hrLayout.addWidget(chartview)
 
         #---Status Variable Initialization
         self.startFlag = True
