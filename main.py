@@ -9,6 +9,7 @@ from PyQt5.QtGui import QPainter
 from ui import Ui_Dialog
 from camera import CameraBackend
 from db import DataBackend
+from hr import HeartRate
 class MainDlg(QDialog):
 
     def __init__(self):
@@ -46,7 +47,8 @@ class MainDlg(QDialog):
         #---Status Variable Initialization
         self.startFlag = True
         self.camera = CameraBackend()
-
+        self.db = DataBackend()
+        self.hr = HeartRate()
 
         #---Connection
         self.ui.btnStart.clicked.connect(self.btnStart_clicked)
