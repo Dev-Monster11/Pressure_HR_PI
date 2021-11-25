@@ -39,10 +39,10 @@ class MainDlg(QDialog):
         axisY = QValueAxis()
         axisY.setRange(0, 200)
         axisX = QValueAxis()
-        axisX.setRange(0, 200)
+        axisX.setRange(0, 50)
         self.chart.addAxis(axisX, Qt.AlignBottom)
         self.chart.addAxis(axisY, Qt.AlignLeft)
-
+        # self.chart.legend[0].set
 
         self.chart.addSeries(self.series)
         self.series.attachAxis(axisX)
