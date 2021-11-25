@@ -34,6 +34,7 @@ class MainDlg(QDialog):
         self.ui.btnExit.setIconSize(QSize(32, 32))
         #----Chart Initialization
         self.series = QLineSeries()
+        self.sseries = QScatterSeries()
         self.chart = QChart()
         
         self.axisY = QValueAxis()
@@ -45,8 +46,9 @@ class MainDlg(QDialog):
         self.chart.legend().setMarkerShape(QLegend.MarkerShapeCircle)
         self.chart.legend().hide()
         self.chart.addSeries(self.series)
-        self.series.attachAxis(self.axisX)
-        self.series.attachAxis(self.axisY)
+        self.chart.addSeries(self.sseries)
+        # self.series.attachAxis(self.axisX)
+        # self.series.attachAxis(self.axisY)
         # chart.createDefaultAxes()
         self.chart.setMargins(QMargins(0, 0, 0, 0))
         self.chart.setTheme(QChart.ChartThemeDark)
@@ -84,11 +86,12 @@ class MainDlg(QDialog):
     def HRpacketCaptured(self, hr):
         self.index += 1
         self.series.append(self.index, hr)
+        self.sseries.append(self.index, hr)
         if self.index > 40:
             self.axisX.setRange(self.index - 40 + 1, self.index - 40 + 51)
         # self.index += 1
         # self.series.append(self.index, (100 - self.index) % 150)
-        print(self.index, hr)
+        # print(self.index, hr)
 
     def btnExit_clicked(self):
         sys.exit(0)
