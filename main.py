@@ -3,7 +3,7 @@ import sys
 
 import qtawesome as qta
 from PyQt5.QtWidgets import QApplication, QDialog
-from PyQt5.QtChart import QChart, QChartView, QLineSeries, QValueAxis
+from PyQt5.QtChart import QChart, QChartView, QLineSeries, QValueAxis, QLegend
 from PyQt5.QtCore import QPointF, QMargins, QTimer, QSize, pyqtSlot, Qt
 from PyQt5.QtGui import QPainter
 from ui import Ui_Dialog
@@ -42,7 +42,7 @@ class MainDlg(QDialog):
         self.axisX.setRange(0, 50)
         self.chart.addAxis(axisX, Qt.AlignBottom)
         self.chart.addAxis(axisY, Qt.AlignLeft)
-        self.chart.legend().setMarkerShape(QLegend::MarkerShapeCircle)
+        self.chart.legend().setMarkerShape(QLegend.MarkerShapeCircle)
         self.chart.legend().hide()
         self.chart.addSeries(self.series)
         self.series.attachAxis(axisX)
