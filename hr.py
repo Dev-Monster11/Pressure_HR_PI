@@ -97,7 +97,7 @@ class HeartRate(QObject):
         try:
             self.gt.expect("value: ([0-9a-f]+)")
             battery_level = self.gt.match.group(1)
-            self.battery_level = int(self.battery_level, 16))
+            self.battery_level = int(self.battery_level, 16)
             print("Battery level: " + str(self.battery_level))
 
         except pexpect.TIMEOUT:
