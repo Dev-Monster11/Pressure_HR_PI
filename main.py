@@ -36,13 +36,13 @@ class MainDlg(QDialog):
         self.series = QLineSeries()
         self.chart = QChart()
         
-        axisY = QValueAxis()
-        axisY.setRange(0, 200)
-        axisX = QValueAxis()
-        axisX.setRange(0, 50)
+        self.axisY = QValueAxis()
+        self.axisY.setRange(0, 200)
+        self.axisX = QValueAxis()
+        self.axisX.setRange(0, 50)
         self.chart.addAxis(axisX, Qt.AlignBottom)
         self.chart.addAxis(axisY, Qt.AlignLeft)
-        # self.chart.legend().setMarkerShape(QLegend::MarkerShapeCircle)
+        self.chart.legend().setMarkerShape(QLegend::MarkerShapeCircle)
         self.chart.legend().hide()
         self.chart.addSeries(self.series)
         self.series.attachAxis(axisX)
@@ -84,6 +84,8 @@ class MainDlg(QDialog):
     def HRpacketCaptured(self, hr):
         self.index += 1
         self.series.append(self.index, hr)
+        if self.index > 40:
+            self.axisX.setRange(self.index - 40 + 1, self.index - 40 + 51)
         # self.index += 1
         # self.series.append(self.index, (100 - self.index) % 150)
         print(self.index, hr)
