@@ -48,8 +48,8 @@ class CameraBackend(QObject):
             h, w = image.shape
 
             bPL = w 
-            qImg = QImage(image.data, w, h, bPL, QImage.Format_RGB888).rgbSwapped().scaled(self.viewFinder.width(), self.viewFinder.height())
-            self.viewFinder.setPixmap(QPixmap.fromImage(qImg, Qt.MonoOnly))
+            qImg = QImage(image.data, w, h, bPL, QImage.Format_Mono).scaled(self.viewFinder.width(), self.viewFinder.height())
+            self.viewFinder.setPixmap(QPixmap.fromImage(qImg))
             
             QThread.msleep(40)
     
