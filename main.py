@@ -8,7 +8,7 @@ from PyQt5.QtCore import QPointF, QMargins, QTimer
 from PyQt5.QtGui import QPainter
 from ui import Ui_Dialog
 from camera import CameraBackend
-from firebase import FirebaseBackend
+from db import DataBackend
 class MainDlg(QDialog):
 
     def __init__(self):
