@@ -1,5 +1,8 @@
+import os
 import firebase_admin
-from firebase_admin import credentials, db, storage, firestore
+from firebase_admin import credentials
+from google.cloud import firestore
+from firebase_admin import firestore
 import json
 from PyQt5.QtCore import QObject
 
