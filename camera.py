@@ -24,7 +24,7 @@ class CameraBackend(QObject):
     def stopStream(self):
         pass
     def captureVideo(self):
-        if not self.cap.isOpen():
+        if not self.cap.isOpened():
             return
         if os.path.exists(self.tempPath):
             os.chdir(self.tempPath)
