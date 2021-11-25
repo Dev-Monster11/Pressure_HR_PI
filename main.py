@@ -4,7 +4,7 @@ import sys
 import qtawesome as qta
 from PyQt5.QtWidgets import QApplication, QDialog
 from PyQt5.QtChart import QChart, QChartView, QLineSeries
-from PyQt5.QtCore import QPointF, QMargins, QTimer
+from PyQt5.QtCore import QPointF, QMargins, QTimer, QSize
 from PyQt5.QtGui import QPainter
 from ui import Ui_Dialog
 from camera import CameraBackend
@@ -23,9 +23,14 @@ class MainDlg(QDialog):
         self.ui.groupBox.setLayout(self.ui.groupboxLayout)
         self.ui.groupBox_2.setLayout(self.ui.gridLayout)
         #-----UI----
-        self.ui.btnStart.setIcon(qta.icon('ri.play-fill'))
-        # self.ui.btnUpload.setIcon(qta.icon('fa5.upload'))
-        # self.ui.btnExit.setIcon(qta.icon('fa5.times-circle'))
+        self.ui.btnStart.setIcon(qta.icon('ri.play-fill', color='green'))
+        self.ui.btnStart.setIconSize(QSize(32, 32))
+
+        self.ui.btnUpload.setIcon(qta.icon('ri.video-upload'), color='green')
+        self.ui.btnUpload.setIconSize(QSize(32, 32))
+
+        self.ui.btnExit.setIcon(qta.icon('ri.close-circle-fill'), color='green')
+        self.ui.btnExit.setIconSize(QSize(32, 32))
         #----Chart Initialization
         self.series = QLineSeries()
         chart = QChart()
