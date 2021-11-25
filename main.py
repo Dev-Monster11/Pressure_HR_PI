@@ -75,7 +75,7 @@ class MainDlg(QDialog):
         self.index += 1
         self.series.append(self.index, hr)
         self.index += 1
-        self.series.append(self.index, QRandomGenerator.global.bounded(200))
+        self.series.append(self.index, (100 - self.index) % 150)
 
     def btnExit_clicked(self):
         sys.exit(0)
