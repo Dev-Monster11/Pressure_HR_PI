@@ -24,7 +24,7 @@ class MainDlg(QDialog):
         self.ui.groupBox.setLayout(self.ui.groupboxLayout)
         self.ui.groupBox_2.setLayout(self.ui.gridLayout)
         #-----UI----
-        self.ui.btnStart.setIcon(qta.icon('ri.play-fill', color='#8BC34A '))
+        self.ui.btnStart.setIcon(qta.icon('ri.play-fill', color='#8BC34A'))
         self.ui.btnStart.setIconSize(QSize(32, 32))
 
         # self.ui.btnUpload.setIcon(qta.icon('ri.video-upload-fill', color='green'))
