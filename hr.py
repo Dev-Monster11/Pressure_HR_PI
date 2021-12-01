@@ -6,6 +6,7 @@ class HeartRate(QObject):
     def __init__(self):
         super(HeartRate, self).__init__()    
         self.batterylevel = 0
+        self.retry = True
         
     def captureHR(self):
         self.retry = True        
