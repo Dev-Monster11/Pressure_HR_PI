@@ -24,14 +24,14 @@ class MainDlg(QDialog):
         self.ui.groupBox.setLayout(self.ui.groupboxLayout)
         self.ui.groupBox_2.setLayout(self.ui.gridLayout)
         #-----UI----
-        self.ui.btnStart.setIcon(qta.icon('ri.play-fill', color='#8BC34A'))
+        self.ui.btnStart.setIcon(qta.icon('fa5.plus', color='#8BC34A'))
         self.ui.btnStart.setIconSize(QSize(48, 48))
 
-        # self.ui.btnUpload.setIcon(qta.icon('ri.video-upload-fill', color='green'))
-        # self.ui.btnUpload.setIconSize(QSize(32, 32))
+        self.ui.btnUpload.setIcon(qta.icon('fa5s.upload', color='#8BC34A'))
+        self.ui.btnUpload.setIconSize(QSize(48, 48))
 
-        # self.ui.btnExit.setIcon(qta.icon('ri.close-circle-fill', color='green'))
-        # self.ui.btnExit.setIconSize(QSize(32, 32))
+        self.ui.btnExit.setIcon(qta.icon('fa5b.times', color='#8BC34A'))
+        self.ui.btnExit.setIconSize(QSize(48, 48))
         #----Chart Initialization
         self.series = QLineSeries()
         self.sseries = QScatterSeries()
