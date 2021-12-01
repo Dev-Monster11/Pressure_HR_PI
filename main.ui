@@ -293,7 +293,7 @@ QListWidget{
      <number>10</number>
     </property>
     <item row="0" column="0">
-     <widget class="QPushButton" name="btnStart">
+     <widget class="QPushButton" name="btnNew">
       <property name="maximumSize">
        <size>
         <width>200</width>
@@ -474,7 +474,7 @@ font-weight: bold;</string>
      <number>50</number>
     </property>
     <item row="0" column="0">
-     <widget class="QPushButton" name="btnStart_2">
+     <widget class="QPushButton" name="btnFirst">
       <property name="minimumSize">
        <size>
         <width>55</width>
@@ -493,7 +493,7 @@ font-weight: bold;</string>
      </widget>
     </item>
     <item row="0" column="2">
-     <widget class="QPushButton" name="btnStart_4">
+     <widget class="QPushButton" name="btnNext">
       <property name="minimumSize">
        <size>
         <width>55</width>
@@ -512,7 +512,7 @@ font-weight: bold;</string>
      </widget>
     </item>
     <item row="0" column="1">
-     <widget class="QPushButton" name="btnStart_3">
+     <widget class="QPushButton" name="btnPrev">
       <property name="minimumSize">
        <size>
         <width>55</width>
@@ -531,7 +531,7 @@ font-weight: bold;</string>
      </widget>
     </item>
     <item row="0" column="3">
-     <widget class="QPushButton" name="btnStart_5">
+     <widget class="QPushButton" name="btnLast">
       <property name="minimumSize">
        <size>
         <width>55</width>

@@ -7,6 +7,7 @@ from PyQt5.QtChart import QChart, QChartView, QLineSeries, QValueAxis, QLegend, 
 from PyQt5.QtCore import QPointF, QMargins, QTimer, QSize, pyqtSlot, Qt
 from PyQt5.QtGui import QPainter
 from maindlg import Ui_Dialog
+from newdlg import Ui_NewDlg
 from camera import CameraBackend
 from db import DataBackend
 from hr import HeartRate
@@ -15,6 +16,16 @@ class MainDlg(QDialog):
     def __init__(self):
         super(MainDlg, self).__init__()
 
+
+        self.newDlg = QDialog(self)
+        self.newUI = Ui_NewDlg()
+        self.newUI.setupUi(newDlg)
+        self.newDlg.setLayout(self.newUI.mainLayout)
+        self.newUI.btnOK.setIcon(qta.icon('fa5s.check', color="#8BC34A"))
+        self.ui.btnUpload.setIconSize(QSize(48, 48))
+        
+        self.newUI.btnCancel.setIcon(qta.icon('fa5s.times', color="#8BC34A"))
+        self.ui.btnCancel.setIconSize(QSize(48, 48))
         #-----Layout---
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
@@ -24,8 +35,8 @@ class MainDlg(QDialog):
         self.ui.groupBox.setLayout(self.ui.groupboxLayout)
         self.ui.groupBox_2.setLayout(self.ui.gridLayout)
         #-----UI----
-        self.ui.btnStart.setIcon(qta.icon('fa5s.plus', color='#8BC34A'))
-        self.ui.btnStart.setIconSize(QSize(48, 48))
+        # self.ui.btnStart.setIcon(qta.icon('fa5s.plus', color='#8BC34A'))
+        # self.ui.btnStart.setIconSize(QSize(48, 48))
 
         self.ui.btnUpload.setIcon(qta.icon('fa5s.upload', color='#8BC34A'))
         self.ui.btnUpload.setIconSize(QSize(48, 48))
