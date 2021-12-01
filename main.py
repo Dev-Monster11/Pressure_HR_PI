@@ -19,13 +19,13 @@ class MainDlg(QDialog):
 
         self.newDlg = QDialog(self)
         self.newUI = Ui_NewDlg()
-        self.newUI.setupUi(newDlg)
+        self.newUI.setupUi(self.newDlg)
         self.newDlg.setLayout(self.newUI.mainLayout)
         self.newUI.btnOK.setIcon(qta.icon('fa5s.check', color="#8BC34A"))
-        self.ui.btnUpload.setIconSize(QSize(48, 48))
+        self.newUI.btnOK.setIconSize(QSize(48, 48))
         
         self.newUI.btnCancel.setIcon(qta.icon('fa5s.times', color="#8BC34A"))
-        self.ui.btnCancel.setIconSize(QSize(48, 48))
+        self.newUI.btnCancel.setIconSize(QSize(48, 48))
         #-----Layout---
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
