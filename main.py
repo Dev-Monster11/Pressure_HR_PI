@@ -24,7 +24,7 @@ class MainDlg(QDialog):
         self.ui.groupBox.setLayout(self.ui.groupboxLayout)
         self.ui.groupBox_2.setLayout(self.ui.gridLayout)
         #-----UI----
-        self.ui.btnStart.setIcon(qta.icon('fa5.plus', color='#8BC34A'))
+        self.ui.btnStart.setIcon(qta.icon('fa5s.plus', color='#8BC34A'))
         self.ui.btnStart.setIconSize(QSize(48, 48))
 
         self.ui.btnUpload.setIcon(qta.icon('fa5s.upload', color='#8BC34A'))
