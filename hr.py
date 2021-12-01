@@ -8,7 +8,7 @@ class HeartRate(QObject):
         self.batterylevel = 0
         
     def captureHR(self):
-        retry = True        
+        self.retry = True        
         self.gt.sendline("char-write-req 0x0011 0100")
         period = 1.
         last_measure = time.time() - period
@@ -111,7 +111,7 @@ class HeartRate(QObject):
             print("Couldn't read battery level.")
 
     def connect(self):
-        while retry:
+        while self.retry:
 
             self.gt = pexpect.spawn('gatttool -b EE:D3:5A:86:87:65 -t random --interactive')
             self.gt.expect(r"\[LE\]")
@@ -121,7 +121,7 @@ class HeartRate(QObject):
                 print(i)
                 if i == 0:
                     self.gt.expect(r"\[LE\]>", timeout=100)
-                    retry = False
+                    self.retry = False
             except pexpect.TIMEOUT:
                 print("Connection timeout. Retrying.")
         
