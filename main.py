@@ -81,7 +81,7 @@ class MainDlg(QDialog):
         self.hr = HeartRate()
 
         #---Connection
-        self.ui.btnStart.clicked.connect(self.btnStart_clicked)
+        self.ui.btnNew.clicked.connect(self.btnNew_clicked)
         self.ui.btnExit.clicked.connect(self.btnExit_clicked)
 
 
@@ -113,6 +113,10 @@ class MainDlg(QDialog):
 
     def btnExit_clicked(self):
         sys.exit(0)
+
+    def btnNew_clicked(self):
+
+        self.newDlg.exec()
     def btnStart_clicked(self):
 
         
