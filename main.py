@@ -30,7 +30,7 @@ class MainDlg(QDialog):
         self.ui.btnUpload.setIcon(qta.icon('fa5s.upload', color='#8BC34A'))
         self.ui.btnUpload.setIconSize(QSize(48, 48))
 
-        self.ui.btnExit.setIcon(qta.icon('fa5b.times', color='#8BC34A'))
+        self.ui.btnExit.setIcon(qta.icon('fa5s.times', color='#8BC34A'))
         self.ui.btnExit.setIconSize(QSize(48, 48))
         #----Chart Initialization
         self.series = QLineSeries()
