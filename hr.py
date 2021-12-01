@@ -111,14 +111,18 @@ class HeartRate(QObject):
             print("Couldn't read battery level.")
 
     def connect(self):
-        self.gt = pexpect.spawn('gatttool -b EE:D3:5A:86:87:65 -t random --interactive')
-        self.gt.expect(r"\[LE\]")
-        self.gt.sendline("connect")
-        try:
-            i = self.gt.expect(["Connection successful.", r"\[CON\]"], timeout=100)
-            print(i)
-            if i == 0:
-                self.gt.expect(r"\[LE\]>", timeout=100)
-        except pexpect.TIMEOUT:
-            print("Connection timeout. Retrying.")
+        while retry:
+
+            self.gt = pexpect.spawn('gatttool -b EE:D3:5A:86:87:65 -t random --interactive')
+            self.gt.expect(r"\[LE\]")
+            self.gt.sendline("connect")
+            try:
+                i = self.gt.expect(["Connection successful.", r"\[CON\]"], timeout=100)
+                print(i)
+                if i == 0:
+                    self.gt.expect(r"\[LE\]>", timeout=100)
+                    retry = False
+            except pexpect.TIMEOUT:
+                print("Connection timeout. Retrying.")
+        
         print('connected')

@@ -301,7 +301,7 @@ QListWidget{
        </size>
       </property>
       <property name="text">
-       <string>Start</string>
+       <string>New </string>
       </property>
      </widget>
     </item>
