@@ -6,7 +6,7 @@ from PyQt5.QtWidgets import QApplication, QDialog
 from PyQt5.QtChart import QChart, QChartView, QLineSeries, QValueAxis, QLegend, QScatterSeries
 from PyQt5.QtCore import QPointF, QMargins, QTimer, QSize, pyqtSlot, Qt
 from PyQt5.QtGui import QPainter
-from ui import Ui_Dialog
+from maindlg import Ui_Dialog
 from camera import CameraBackend
 from db import DataBackend
 from hr import HeartRate
