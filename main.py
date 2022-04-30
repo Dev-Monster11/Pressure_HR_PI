@@ -6,7 +6,8 @@ from PyQt5.QtWidgets import QApplication, QDialog
 from PyQt5.QtChart import QChart, QChartView, QLineSeries, QValueAxis, QLegend, QScatterSeries
 from PyQt5.QtCore import QPointF, QMargins, QTimer, QSize, pyqtSlot, Qt
 from PyQt5.QtGui import QPainter
-from maindlg import Ui_Dialog
+# from maindlg import Ui_Dialog
+from main_ui import Ui_MainDlg
 from newdlg import Ui_NewDlg
 from camera import CameraBackend
 from db import DataBackend
@@ -15,8 +16,6 @@ class MainDlg(QDialog):
     
     def __init__(self):
         super(MainDlg, self).__init__()
-
-
         self.newDlg = QDialog(self)
         self.newUI = Ui_NewDlg()
         self.newUI.setupUi(self.newDlg)
@@ -27,13 +26,16 @@ class MainDlg(QDialog):
         self.newUI.btnCancel.setIcon(qta.icon('fa5s.times', color="#8BC34A"))
         self.newUI.btnCancel.setIconSize(QSize(48, 48))
         #-----Layout---
-        self.ui = Ui_Dialog()
+        self.ui = Ui_MainDlg()
         self.ui.setupUi(self)
         self.setLayout(self.ui.mainLayout)
-        self.ui.tab.setLayout(self.ui.realtimeLayout)
-        self.ui.tab_2.setLayout(self.ui.historyLayout)
-        self.ui.groupBox.setLayout(self.ui.groupboxLayout)
-        self.ui.groupBox_2.setLayout(self.ui.gridLayout)
+        self.ui.tab.setLayout(self.ui.historyLayout)
+        self.ui.tab_2.setLayout(self.ui.liveLayout)
+        
+        self.ui.groupBox.setLayout(self.ui.actionLayout)
+        self.ui.btnStart.hide()
+        self.ui.btnExit_2.hide()
+        self.ui.btnBlur.hide()
         #-----UI----
         # self.ui.btnStart.setIcon(qta.icon('fa5s.plus', color='#8BC34A'))
         # self.ui.btnStart.setIconSize(QSize(48, 48))
@@ -41,8 +43,11 @@ class MainDlg(QDialog):
         self.ui.btnUpload.setIcon(qta.icon('fa5s.upload', color='#8BC34A'))
         self.ui.btnUpload.setIconSize(QSize(48, 48))
 
-        self.ui.btnExit.setIcon(qta.icon('fa5s.times', color='#8BC34A'))
-        self.ui.btnExit.setIconSize(QSize(48, 48))
+        self.ui.btnExit_1.setIcon(qta.icon('fa5s.times', color='#8BC34A'))
+        self.ui.btnExit_1.setIconSize(QSize(48, 48))
+        self.ui.btnExit_2.setIcon(qta.icon('fa5s.times', color='#8BC34A'))
+        self.ui.btnExit_2.setIconSize(QSize(48, 48))
+
         #----Chart Initialization
         self.series = QLineSeries()
         self.sseries = QScatterSeries()
@@ -72,8 +77,8 @@ class MainDlg(QDialog):
         chartview = QChartView(self.chart)
         chartview.setRenderHint(QPainter.Antialiasing)
         # self.ui.realtimeLayout.addWidget(chartview, 0, 1, 1, 1)
-        self.ui.hrLayout.addWidget(chartview)
-        self.ui.hrLayout.addWidget(self.ui.lblHR)
+        self.ui.chartLayout.addWidget(chartview)
+        # self.ui.chartLayout.addWidget(self.ui.lblHR)
         #---Status Variable Initialization
         self.startFlag = True
         self.camera = CameraBackend()
@@ -82,12 +87,12 @@ class MainDlg(QDialog):
 
         #---Connection
         self.ui.btnNew.clicked.connect(self.btnNew_clicked)
-        self.ui.btnExit.clicked.connect(self.btnExit_clicked)
-
-
+        self.ui.btnExit_1.clicked.connect(self.btnExit_clicked)
+        self.ui.btnExit_2.clicked.connect(self.btnExit_clicked)
+        self.ui.tabWidget.currentChanged.connect(self.tabChanged)
 
         self.camera.setViewFinder(self.ui.label)
-        self.hr.connect()
+        # self.hr.connect()
 
         
         #-----global variables---
@@ -99,6 +104,23 @@ class MainDlg(QDialog):
     #     self.index += 1
     #     self.series.append(self.index, 100 - self.index)
     #     print('timereim')
+
+    @pyqtSlot(int)
+    def tabChanged(self, tabIndex):
+        if tabIndex == 0:
+            self.ui.btnStart.hide()
+            self.ui.btnExit_2.hide()
+            self.ui.btnBlur.hide()
+            self.ui.btnNew.show()
+            self.ui.btnExit_1.show()
+            self.ui.btnUpload.show()
+        else:
+            self.ui.btnStart.show()
+            self.ui.btnExit_2.show()
+            self.ui.btnBlur.show()
+            self.ui.btnNew.hide()
+            self.ui.btnExit_1.hide()
+            self.ui.btnUpload.hide()        
     @pyqtSlot(int)
     def HRpacketCaptured(self, hr):
         self.index += 1

@@ -1,0 +1,4 @@
+PyQt5
+qtawesome
+face_recognition
+numpy
