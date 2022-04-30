@@ -146,10 +146,12 @@ class MainDlg(QDialog):
         
         if self.startFlag == False:
             self.ui.btnStart.setText('Start')
+            print("Stopped")
             # self.hr.stopHR()
         else:
             self.index = 0
             # self.hr.HRpacketCapture.connect(self.HRpacketCaptured)
+            print("Started")
             self.ui.btnStart.setText('Stop')
             # self.hr.startHR()
             self.camera.startStreaming()
