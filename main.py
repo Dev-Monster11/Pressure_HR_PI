@@ -11,7 +11,7 @@ from main_ui import Ui_MainDlg
 from newdlg import Ui_NewDlg
 from camera import CameraBackend
 from db import DataBackend
-from hr import HeartRate
+# from hr import HeartRate
 class MainDlg(QDialog):
     
     def __init__(self):
@@ -83,7 +83,7 @@ class MainDlg(QDialog):
         self.startFlag = False
         self.camera = CameraBackend()
         self.db = DataBackend()
-        self.hr = HeartRate()
+        # self.hr = HeartRate()
 
         #---Connection
         self.ui.btnNew.clicked.connect(self.btnNew_clicked)
@@ -146,12 +146,12 @@ class MainDlg(QDialog):
         
         if self.startFlag == False:
             self.ui.btnStart.setText('Start')
-            self.hr.stopHR()
+            # self.hr.stopHR()
         else:
             self.index = 0
             self.hr.HRpacketCapture.connect(self.HRpacketCaptured)
             self.ui.btnStart.setText('Stop')
-            self.hr.startHR()
+            # self.hr.startHR()
             self.camera.startStreaming()
         self.startFlag = not self.startFlag            
 
