@@ -37,8 +37,8 @@ class MainDlg(QDialog):
         self.ui.btnExit_2.hide()
         self.ui.btnBlur.hide()
         #-----UI----
-        # self.ui.btnStart.setIcon(qta.icon('fa5s.plus', color='#8BC34A'))
-        # self.ui.btnStart.setIconSize(QSize(48, 48))
+        self.ui.btnStart.setIcon(qta.icon('fa5s.plus', color='#8BC34A'))
+        self.ui.btnStart.setIconSize(QSize(48, 48))
 
         self.ui.btnUpload.setIcon(qta.icon('fa5s.upload', color='#8BC34A'))
         self.ui.btnUpload.setIconSize(QSize(48, 48))
@@ -80,13 +80,14 @@ class MainDlg(QDialog):
         self.ui.chartLayout.addWidget(chartview)
         # self.ui.chartLayout.addWidget(self.ui.lblHR)
         #---Status Variable Initialization
-        self.startFlag = True
+        self.startFlag = False
         self.camera = CameraBackend()
         self.db = DataBackend()
         self.hr = HeartRate()
 
         #---Connection
         self.ui.btnNew.clicked.connect(self.btnNew_clicked)
+        self.ui.btnStart.clicked.connect(self.btnStart_clicked)
         self.ui.btnExit_1.clicked.connect(self.btnExit_clicked)
         self.ui.btnExit_2.clicked.connect(self.btnExit_clicked)
         self.ui.tabWidget.currentChanged.connect(self.tabChanged)
@@ -142,8 +143,8 @@ class MainDlg(QDialog):
     def btnStart_clicked(self):
 
         
-        self.startFlag = not self.startFlag
-        if self.startFlag == True:
+        
+        if self.startFlag == False:
             self.ui.btnStart.setText('Start')
             self.hr.stopHR()
         else:
@@ -152,6 +153,7 @@ class MainDlg(QDialog):
             self.ui.btnStart.setText('Stop')
             self.hr.startHR()
             self.camera.startStreaming()
+        self.startFlag = not self.startFlag            
 
 def main():
     app = QApplication(sys.argv)
