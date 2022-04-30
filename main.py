@@ -149,7 +149,7 @@ class MainDlg(QDialog):
             # self.hr.stopHR()
         else:
             self.index = 0
-            self.hr.HRpacketCapture.connect(self.HRpacketCaptured)
+            # self.hr.HRpacketCapture.connect(self.HRpacketCaptured)
             self.ui.btnStart.setText('Stop')
             # self.hr.startHR()
             self.camera.startStreaming()
